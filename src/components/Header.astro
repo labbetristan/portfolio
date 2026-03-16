@@ -9,11 +9,14 @@ const navLinks = [
 ];
 ---
 
-<header class="sticky top-0 z-50 bg-card/80 dark:bg-[var(--color-dark-surface)]/80 backdrop-blur-md border-b border-default transition-colors duration-300">
+<header class="sticky top-0 z-50 glass transition-colors duration-300">
   <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16" aria-label="Navigation principale">
     <!-- Logo / Name -->
-    <a href="/portfolio/" class="text-xl font-bold text-primary dark:text-white hover:text-accent transition-colors">
-      Tristan Labbé
+    <a href="/portfolio/" class="group flex items-center gap-2.5 transition-colors">
+      <span class="flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-to-br from-accent to-[#818CF8] text-white text-xs font-bold tracking-tight shadow-sm group-hover:shadow-md group-hover:shadow-accent/20 transition-shadow duration-300">TL</span>
+      <span class="text-lg text-primary dark:text-white">
+        <span class="font-light">Tristan</span> <span class="font-bold">Labbé</span>
+      </span>
     </a>
 
     <!-- Desktop nav -->
@@ -24,7 +27,7 @@ const navLinks = [
           class:list={[
             'text-sm font-medium transition-colors hover:text-accent',
             currentPath === link.href
-              ? 'text-accent'
+              ? 'text-accent-text dark:text-accent-text-dark'
               : 'text-text-muted dark:text-[var(--color-dark-text-muted)]',
           ]}
           aria-current={currentPath === link.href ? 'page' : undefined}
@@ -48,6 +51,21 @@ const navLinks = [
           </svg>
         </button>
       </div>
+      <!-- Bouton pause animations — RGAA 13.8 -->
+      <button
+        type="button"
+        id="toggle-motion"
+        aria-pressed="false"
+        class="p-2 rounded-lg hover:bg-surface-alt dark:hover:bg-[var(--color-dark-card)] transition-colors text-text-muted dark:text-[var(--color-dark-text-muted)]"
+      >
+        <svg id="icon-pause-desktop" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 5.25v13.5m-7.5-13.5v13.5" />
+        </svg>
+        <svg id="icon-play-desktop" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.347a1.125 1.125 0 010 1.972l-11.54 6.347a1.125 1.125 0 01-1.667-.986V5.653z" />
+        </svg>
+        <span class="sr-only" id="motion-label">Désactiver les animations</span>
+      </button>
     </div>
 
     <!-- Mobile hamburger + theme toggle -->
@@ -66,6 +84,21 @@ const navLinks = [
           </svg>
         </button>
       </div>
+      <!-- Bouton pause animations mobile — RGAA 13.8 -->
+      <button
+        type="button"
+        id="toggle-motion-mobile"
+        aria-pressed="false"
+        class="p-2 rounded-lg hover:bg-surface-alt dark:hover:bg-[var(--color-dark-card)] transition-colors text-text-muted dark:text-[var(--color-dark-text-muted)]"
+      >
+        <svg id="icon-pause-mobile" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 5.25v13.5m-7.5-13.5v13.5" />
+        </svg>
+        <svg id="icon-play-mobile" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.347a1.125 1.125 0 010 1.972l-11.54 6.347a1.125 1.125 0 01-1.667-.986V5.653z" />
+        </svg>
+        <span class="sr-only">Désactiver les animations</span>
+      </button>
       <button
         type="button"
         id="menu-toggle"
@@ -94,7 +127,7 @@ const navLinks = [
           class:list={[
             'block text-base font-medium px-3 py-2 rounded-lg transition-colors',
             currentPath === link.href
-              ? 'text-accent bg-accent/10'
+              ? 'text-accent-text dark:text-accent-text-dark bg-accent/10'
               : 'text-text-muted dark:text-[var(--color-dark-text-muted)] hover:text-accent hover:bg-surface-alt dark:hover:bg-[var(--color-dark-card)]',
           ]}
           aria-current={currentPath === link.href ? 'page' : undefined}

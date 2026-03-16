@@ -8,18 +8,18 @@ import ScrollReveal from '../components/ScrollReveal.astro';
 const services = [
   {
     title: 'Site vitrine',
-    description: 'Un site professionnel pour présenter votre activité, vos services et vos coordonnées.',
+    description: 'Un site professionnel pour présenter votre activité et vos services. J\'écoute votre besoin et je propose une solution technique adaptée.',
     icon: '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0V12a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 12V5.25" /></svg>',
   },
   {
     title: 'Refonte de site',
-    description: 'Votre site est vieillissant ? Je le modernise en conservant votre identité et votre référencement.',
+    description: 'Votre site est vieillissant ou ne vous ressemble plus ? Je le repense techniquement et lui donne un second souffle.',
     icon: '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" /></svg>',
   },
   {
     title: 'Maintenance & évolution',
-    description: 'Mises à jour, ajout de contenu, corrections techniques : je reste votre interlocuteur unique.',
-    icon: '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17l-5.1-5.1a1.5 1.5 0 010-2.12l.88-.88a1.5 1.5 0 012.12 0l2.1 2.1 5.1-5.1a1.5 1.5 0 012.12 0l.88.88a1.5 1.5 0 010 2.12l-7.98 7.98a1.5 1.5 0 01-2.12 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75a4.5 4.5 0 01-4.884 4.484c-1.076-.091-2.264.071-2.95.904l-7.152 8.684a2.548 2.548 0 11-3.586-3.586l8.684-7.152c.833-.686.995-1.874.904-2.95a4.5 4.5 0 016.336-4.486l-3.276 3.276a2.25 2.25 0 003.182 3.182l3.276-3.276c.256.565.398 1.192.398 1.852z" /></svg>',
+    description: 'Mises à jour, corrections techniques, évolutions fonctionnelles : je reste votre interlocuteur unique après la livraison.',
+    icon: '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75a4.5 4.5 0 01-4.884 4.484c-1.076-.091-2.264.071-2.95.904l-7.152 8.684a2.548 2.548 0 11-3.586-3.586l8.684-7.152c.833-.686.995-1.874.904-2.95a4.5 4.5 0 016.336-4.486l-3.276 3.276a2.25 2.25 0 003.182 3.182l3.276-3.276c.256.565.398 1.192.398 1.852z" /></svg>',
   },
 ];
 
@@ -28,152 +28,276 @@ const portfolio = [
     title: 'Les Butineuses des 1000 fleurs',
     description: 'Site vitrine pour une association apicole.',
     href: 'https://lesbutineusesdes1000fleurs.fr/',
+    image: '/portfolio/images/portfolio/butineuses.webp',
   },
   {
     title: 'Soirée Guitare',
     description: 'Site événementiel pour un concert.',
     href: 'https://labbetristan.github.io/soireeGuitare/',
+    image: '/portfolio/images/portfolio/soiree-guitare.webp',
   },
   {
     title: 'Site MoS-T',
     description: 'Site vitrine multilingue français / anglais.',
     href: 'https://aurelieleborgne.github.io/site-MoS-T/fr/',
+    image: '/portfolio/images/portfolio/mos-t.webp',
   },
 ];
 
 const stats = [
-  { value: '10+', label: "ans d'expérience" },
-  { value: '100%', label: 'à distance' },
-  { value: '24h', label: 'délai de réponse' },
+  { value: 10, suffix: '+', label: "ans d'expérience" },
+  { value: 100, suffix: '%', label: 'à distance' },
 ];
 ---
 
 <BaseLayout
   title="Tristan Labbé — Développeur web freelance | Sites sur-mesure pour TPE et artisans"
-  description="Développeur web full-stack indépendant. Création de sites vitrines, refonte et maintenance pour TPE, artisans et associations. Devis gratuit sous 24h."
+  description="Développeur web full-stack indépendant. Création de sites vitrines, refonte et maintenance pour TPE, artisans et associations. Devis gratuit."
 >
   <!-- ===== HERO ===== -->
-  <section class="relative min-h-[90vh] flex items-center justify-center bg-gradient-to-br from-primary via-primary-light to-accent overflow-hidden">
-    <!-- Decorative bg elements -->
-    <div class="absolute inset-0 opacity-10">
-      <div class="absolute top-20 left-10 w-72 h-72 bg-white rounded-full blur-3xl"></div>
-      <div class="absolute bottom-20 right-10 w-96 h-96 bg-accent rounded-full blur-3xl"></div>
+  <section class="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#030712]">
+    <!-- Animated gradient background -->
+    <div class="absolute inset-0 animated-gradient bg-gradient-to-br from-[#030712] via-[#0F172A] to-[#1E3A5F]"></div>
+
+    <!-- Grid pattern overlay -->
+    <div class="absolute inset-0 opacity-[0.03]" style="background-image: url('data:image/svg+xml,%3Csvg width=&quot;60&quot; height=&quot;60&quot; viewBox=&quot;0 0 60 60&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;%3E%3Cg fill=&quot;none&quot; fill-rule=&quot;evenodd&quot;%3E%3Cpath d=&quot;M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z&quot; fill=&quot;%23ffffff&quot;/%3E%3C/g%3E%3C/svg%3E');"></div>
+
+    <!-- Floating orbs -->
+    <div class="absolute top-1/4 left-1/6 w-80 h-80 bg-accent/20 rounded-full blur-[120px] animate-pulse" aria-hidden="true"></div>
+    <div class="absolute bottom-1/4 right-1/6 w-96 h-96 bg-purple-500/15 rounded-full blur-[120px] animate-pulse" style="animation-delay: 2s;" aria-hidden="true"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent/5 rounded-full blur-[150px]" aria-hidden="true"></div>
+
+    <!-- Floating particles -->
+    <div class="absolute inset-0 overflow-hidden" aria-hidden="true">
+      <div class="particle" style="left: 10%; animation-duration: 12s; animation-delay: -4s;"></div>
+      <div class="particle" style="left: 20%; animation-duration: 15s; animation-delay: -10s;"></div>
+      <div class="particle" style="left: 35%; animation-duration: 11s; animation-delay: -2s;"></div>
+      <div class="particle" style="left: 50%; animation-duration: 14s; animation-delay: -8s;"></div>
+      <div class="particle" style="left: 65%; animation-duration: 13s; animation-delay: -6s;"></div>
+      <div class="particle" style="left: 80%; animation-duration: 16s; animation-delay: -12s;"></div>
+      <div class="particle" style="left: 90%; animation-duration: 10s; animation-delay: -1s;"></div>
     </div>
 
-    <div class="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
-      <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
-        Des sites web sur-mesure pour les <span class="text-accent-hover brightness-150">TPE, artisans et associations</span>.
+    <div class="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+      <!-- Badge -->
+      <div class="hero-animate inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm mb-8">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" aria-hidden="true"></span>
+        <span class="text-sm text-white/70">Disponible pour de nouveaux projets</span>
+      </div>
+
+      <h1 class="hero-animate hero-animate-delay-1 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.1] mb-8 tracking-tight">
+        Des sites web sur-mesure<br />pour les <span class="gradient-text">TPE, artisans<br class="hidden sm:block" /> et associations</span>
       </h1>
-      <p class="text-lg sm:text-xl text-white/80 max-w-2xl mx-auto mb-10">
-        Clairs, efficaces et livrés sans jargon — par un professionnel qui connaît vos contraintes.
+
+      <p class="hero-animate hero-animate-delay-2 text-lg sm:text-xl text-white/70 max-w-2xl mx-auto mb-12 leading-relaxed">
+        Votre activité mérite un vrai site. Je le conçois de A à Z — vous restez concentré sur votre métier.
       </p>
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-        <Button href="/portfolio/portfolio/" variant="primary" size="lg">
+
+      <div class="hero-animate hero-animate-delay-3 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="/portfolio/portfolio/" class="btn-glow group inline-flex items-center gap-2 px-8 py-4 bg-accent text-white font-semibold rounded-xl hover:bg-accent-hover shadow-lg shadow-accent/25 hover:shadow-accent/40 transition-all duration-300">
           Voir mes réalisations
-        </Button>
-        <Button href="/portfolio/contact/" variant="outline" size="lg" class="border-white text-white hover:bg-white hover:text-primary">
+          <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+          </svg>
+        </a>
+        <a href="/portfolio/contact/" class="inline-flex items-center gap-2 px-8 py-4 border border-white/20 text-white font-semibold rounded-xl hover:bg-white/10 backdrop-blur-sm transition-all duration-300">
           Me contacter
-        </Button>
+        </a>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/30" aria-hidden="true">
+      <span class="text-xs uppercase tracking-widest">Scroll</span>
+      <div class="w-5 h-8 rounded-full border border-white/20 flex justify-center pt-1.5">
+        <div class="w-1 h-2 bg-white/40 rounded-full animate-bounce"></div>
       </div>
     </div>
   </section>
 
+  <!-- ===== Separator ===== -->
+  <hr class="separator-gradient" />
+
   <!-- ===== À PROPOS ===== -->
-  <section class="py-20 lg:py-28 bg-surface dark:bg-[var(--color-dark-bg)]">
+  <section class="py-24 lg:py-32 bg-surface dark:bg-[var(--color-dark-bg)]">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <ScrollReveal>
         <SectionHeading title="À propos" />
       </ScrollReveal>
 
-      <div class="grid lg:grid-cols-5 gap-12 items-center">
-        <!-- Text -->
+      <div class="grid lg:grid-cols-5 gap-16 items-center">
         <ScrollReveal class="lg:col-span-3">
-          <div class="space-y-5 text-text dark:text-[var(--color-dark-text)] leading-relaxed">
+          <div class="space-y-6 text-lg text-text dark:text-[var(--color-dark-text)] leading-relaxed">
             <p>
-              Développeur web full-stack et chef de projets informatique avec plus de <strong>10 ans d'expérience</strong>, je mets mes compétences au service des petites structures qui méritent un site à la hauteur de leur activité.
+              Développeur web full-stack avec plus de <strong>10 ans d'expérience</strong> en gestion de projets informatique, j'accompagne les TPE, artisans et associations qui veulent un site à la hauteur de leur activité. <strong>Délais respectés, budget maîtrisé, zéro jargon</strong> — vous n'avez pas à vous soucier des détails techniques.
             </p>
             <p>
-              Mon parcours en gestion de projet me permet de cadrer chaque mission avec rigueur : <strong>délais respectés, budget maîtrisé, communication claire</strong>. Vous n'avez pas à vous soucier des détails techniques — c'est précisément mon rôle.
-            </p>
-            <p>
-              Je travaille entièrement à distance, avec des clients partout en France. Je prends en charge l'intégralité du projet : écoute de vos besoins, conception, développement et mise en ligne. Et je reste disponible après la livraison.
+              Je travaille 100% à distance avec des clients partout en France. De l'écoute de vos besoins à la mise en ligne, je suis votre <strong>interlocuteur unique</strong>. Et je reste disponible après la livraison.
             </p>
           </div>
         </ScrollReveal>
 
-        <!-- Stats -->
+        <!-- Animated stats -->
         <ScrollReveal class="lg:col-span-2">
-          <div class="grid grid-cols-3 lg:grid-cols-1 gap-6">
+          <div class="grid grid-cols-2 lg:grid-cols-1 gap-6">
             {stats.map((stat) => (
-              <div class="text-center lg:text-left p-4 rounded-xl bg-card dark:bg-[var(--color-dark-card)] border border-default dark:border-[var(--color-dark-border)]">
-                <div class="text-3xl lg:text-4xl font-bold text-accent mb-1">{stat.value}</div>
-                <div class="text-sm text-text-muted dark:text-[var(--color-dark-text-muted)]">{stat.label}</div>
+              <div class="card-premium p-6 text-center lg:text-left">
+                <div class="flex items-baseline gap-1 justify-center lg:justify-start">
+                  <span class="text-4xl lg:text-5xl font-bold text-accent-text dark:text-accent-text-dark counter" data-target={stat.value}>{stat.value}</span>
+                  <span class="text-2xl lg:text-3xl font-bold text-accent-text dark:text-accent-text-dark">{stat.suffix}</span>
+                </div>
+                <div class="text-sm text-text-muted dark:text-[var(--color-dark-text-muted)] mt-2">{stat.label}</div>
               </div>
             ))}
           </div>
         </ScrollReveal>
       </div>
+
+      <!-- Compétences techniques -->
+      <ScrollReveal class="mt-16">
+        <h3 class="text-sm font-semibold uppercase tracking-widest text-text-muted dark:text-[var(--color-dark-text-muted)] mb-8 text-center">Technologies maîtrisées</h3>
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+          {[
+            { name: 'HTML / CSS', desc: 'Structure & design web', src: '/portfolio/images/logos/html5.svg', alt: 'Logo HTML5' },
+            { name: 'PHP', desc: 'Langage back-end', src: '/portfolio/images/logos/php.svg', alt: 'Logo PHP' },
+            { name: 'Symfony', desc: 'Framework PHP', src: '/portfolio/images/logos/symfony.svg', alt: 'Logo Symfony', darkInvert: true },
+            { name: 'Drupal', desc: 'CMS flexible', src: '/portfolio/images/logos/drupal.svg', alt: 'Logo Drupal' },
+            { name: 'WordPress', desc: 'CMS populaire', src: '/portfolio/images/logos/wordpress.svg', alt: 'Logo WordPress' },
+            { name: 'Astro', desc: 'Framework moderne', src: '/portfolio/images/logos/astro.svg', alt: 'Logo Astro', darkInvert: true },
+            { name: 'RGAA', desc: 'Accessibilité numérique', src: '/portfolio/images/logos/dinum.webp', alt: 'Logo DINUM' },
+          ].map((skill) => (
+            <div class="card-premium group flex items-center gap-4 p-4">
+              <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-surface-alt dark:bg-[var(--color-dark-bg)] flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                <img src={skill.src} alt={skill.alt} width="32" height="32" class:list={['w-8 h-8 object-contain', skill.darkInvert && 'dark:invert']} loading="lazy" />
+              </div>
+              <div>
+                <div class="font-semibold text-sm text-primary dark:text-white">{skill.name}</div>
+                <div class="text-xs text-text-muted dark:text-[var(--color-dark-text-muted)]">{skill.desc}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </ScrollReveal>
     </div>
   </section>
 
-  <!-- ===== SERVICES (aperçu) ===== -->
-  <section class="py-20 lg:py-28 bg-surface-alt dark:bg-[var(--color-dark-surface)]">
+  <hr class="separator-gradient" />
+  <section class="py-24 lg:py-32 bg-surface-alt dark:bg-[var(--color-dark-surface)]">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <ScrollReveal>
-        <SectionHeading title="Mes services" subtitle="Des solutions adaptées à votre budget et vos objectifs." />
+        <SectionHeading title="Mes services" subtitle="Création, refonte ou maintenance — chaque projet est cadré et chiffré." />
       </ScrollReveal>
 
-      <div class="grid md:grid-cols-3 gap-8 mb-12">
+      <div class="grid md:grid-cols-3 gap-8 mb-16 stagger-children">
         {services.map((service) => (
           <ScrollReveal>
-            <Card title={service.title} description={service.description} icon={service.icon} mention="Sur devis" />
+            <div class="card-premium p-8">
+              <div class="icon-glow w-14 h-14 rounded-xl bg-accent/10 flex items-center justify-center mb-6 text-accent" set:html={service.icon} />
+              <h3 class="text-xl font-bold text-primary dark:text-white mb-3">{service.title}</h3>
+              <p class="text-text-muted dark:text-[var(--color-dark-text-muted)] text-sm leading-relaxed mb-5">{service.description}</p>
+              <span class="inline-block text-xs font-semibold text-accent-text dark:text-accent-text-dark bg-accent/10 px-3 py-1.5 rounded-full">
+                Sur devis
+              </span>
+            </div>
           </ScrollReveal>
         ))}
       </div>
 
       <ScrollReveal class="text-center">
-        <Button href="/portfolio/services/" variant="secondary">
+        <a href="/portfolio/services/" class="btn-glow group inline-flex items-center gap-2 px-6 py-3 bg-primary text-white font-semibold rounded-xl hover:bg-primary-light shadow-lg shadow-primary/20 transition-all duration-300">
           En savoir plus
-        </Button>
+          <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+          </svg>
+        </a>
       </ScrollReveal>
     </div>
   </section>
 
-  <!-- ===== PORTFOLIO (aperçu) ===== -->
-  <section class="py-20 lg:py-28 bg-surface dark:bg-[var(--color-dark-bg)]">
+  <hr class="separator-gradient" />
+
+  <!-- ===== PORTFOLIO ===== -->
+  <section class="py-24 lg:py-32 bg-surface dark:bg-[var(--color-dark-bg)]">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <ScrollReveal>
-        <SectionHeading title="Mes réalisations" subtitle="Quelques projets récents pour des clients satisfaits." />
+        <SectionHeading title="Mes réalisations" subtitle="Des sites livrés, en ligne et fonctionnels." />
       </ScrollReveal>
 
-      <div class="grid md:grid-cols-3 gap-8 mb-12">
+      <div class="grid md:grid-cols-3 gap-8 mb-16 stagger-children">
         {portfolio.map((project) => (
           <ScrollReveal>
-            <Card title={project.title} description={project.description} href={project.href} />
+            <a href={project.href} target="_blank" rel="noopener noreferrer" class="card-premium group block overflow-hidden">
+              <div class="relative overflow-hidden">
+                <img src={project.image} alt={`Aperçu du site ${project.title}`} class="w-full aspect-[8/5] object-cover object-top transition-transform duration-500 group-hover:scale-105" loading="lazy" width="800" height="500" />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              </div>
+              <div class="p-6">
+                <h3 class="text-lg font-bold text-primary dark:text-white mb-1 group-hover:text-accent transition-colors">{project.title}</h3>
+                <p class="text-text-muted dark:text-[var(--color-dark-text-muted)] text-sm leading-relaxed">{project.description}</p>
+              </div>
+            </a>
           </ScrollReveal>
         ))}
       </div>
 
       <ScrollReveal class="text-center">
-        <Button href="/portfolio/portfolio/" variant="secondary">
+        <a href="/portfolio/portfolio/" class="btn-glow group inline-flex items-center gap-2 px-6 py-3 bg-primary text-white font-semibold rounded-xl hover:bg-primary-light shadow-lg shadow-primary/20 transition-all duration-300">
           Voir tous les projets
-        </Button>
+          <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+          </svg>
+        </a>
       </ScrollReveal>
     </div>
   </section>
 
   <!-- ===== CTA FINAL ===== -->
-  <section class="py-20 bg-gradient-to-r from-primary to-accent text-white text-center">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+  <section class="py-24 cta-gradient text-white text-center relative overflow-hidden">
+    <!-- Decorative grid -->
+    <div class="absolute inset-0 opacity-[0.03]" style="background-image: url('data:image/svg+xml,%3Csvg width=&quot;60&quot; height=&quot;60&quot; viewBox=&quot;0 0 60 60&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;%3E%3Cg fill=&quot;none&quot; fill-rule=&quot;evenodd&quot;%3E%3Cpath d=&quot;M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z&quot; fill=&quot;%23ffffff&quot;/%3E%3C/g%3E%3C/svg%3E');"></div>
+
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       <ScrollReveal>
-        <h2 class="text-3xl md:text-4xl font-bold mb-4">Un projet en tête ?</h2>
-        <p class="text-lg text-white/80 mb-8">
-          Décrivez-moi votre besoin, je vous réponds sous 24h avec une première estimation gratuite.
+        <h2 class="text-3xl md:text-5xl font-bold mb-6">Un projet en tête ?</h2>
+        <p class="text-lg text-white/70 mb-10">
+          Je vous réponds rapidement avec une estimation gratuite.
         </p>
-        <Button href="/portfolio/contact/" variant="primary" size="lg" class="bg-white text-primary hover:bg-white/90">
+        <a href="/portfolio/contact/" class="btn-glow group inline-flex items-center gap-2 px-8 py-4 bg-white text-primary font-semibold rounded-xl hover:bg-white/90 shadow-lg shadow-black/10 transition-all duration-300">
           Discutons de votre projet
-        </Button>
+          <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+          </svg>
+        </a>
       </ScrollReveal>
     </div>
   </section>
 </BaseLayout>
+
+<!-- Animated counter script -->
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', function() {
+    var counters = document.querySelectorAll('.counter');
+    if (!counters.length) return;
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (!entry.isIntersecting) return;
+        var el = entry.target;
+        var target = parseInt(el.getAttribute('data-target'), 10);
+        var duration = 1500;
+        var start = 0;
+        var startTime = null;
+        function step(timestamp) {
+          if (!startTime) startTime = timestamp;
+          var progress = Math.min((timestamp - startTime) / duration, 1);
+          var eased = 1 - Math.pow(1 - progress, 3); // easeOutCubic
+          el.textContent = Math.floor(eased * target);
+          if (progress < 1) requestAnimationFrame(step);
+          else el.textContent = target;
+        }
+        requestAnimationFrame(step);
+        observer.unobserve(el);
+      });
+    }, { threshold: 0.5 });
+    counters.forEach(function(c) { observer.observe(c); });
+  });
+</script>

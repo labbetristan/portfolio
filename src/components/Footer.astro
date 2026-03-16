@@ -2,16 +2,18 @@
 const currentYear = new Date().getFullYear();
 ---
 
-<footer class="bg-primary dark:bg-[var(--color-dark-surface)] text-white py-10 mt-auto">
+<footer class="relative bg-[#030712] text-white py-12 mt-auto overflow-hidden">
+  <!-- Subtle gradient top border -->
+  <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent to-transparent"></div>
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex flex-col md:flex-row items-center justify-between gap-4">
-      <p class="text-sm text-white/80">
+      <p class="text-sm text-white/60">
         &copy; {currentYear} Tristan Labbé — Développeur web freelance
       </p>
       <div class="flex items-center gap-6">
         <a
           href="/portfolio/mentions-legales/"
-          class="text-sm text-white/70 hover:text-white transition-colors"
+          class="text-sm text-white/60 hover:text-white transition-colors"
         >
           Mentions légales
         </a>

@@ -10,6 +10,42 @@
 </button>
 
 <script is:inline>
+  // Toggle motion — RGAA 13.8
+  (function() {
+    var btns = [document.getElementById('toggle-motion'), document.getElementById('toggle-motion-mobile')];
+    var icons = {
+      pause: [document.getElementById('icon-pause-desktop'), document.getElementById('icon-pause-mobile')],
+      play: [document.getElementById('icon-play-desktop'), document.getElementById('icon-play-mobile')]
+    };
+    var label = document.getElementById('motion-label');
+
+    function apply(reduced) {
+      btns.forEach(function(b) { if (b) b.setAttribute('aria-pressed', String(reduced)); });
+      icons.pause.forEach(function(el) { if (el) el.classList.toggle('hidden', reduced); });
+      icons.play.forEach(function(el) { if (el) el.classList.toggle('hidden', !reduced); });
+      if (label) label.textContent = reduced ? 'Réactiver les animations' : 'Désactiver les animations';
+      // Also update mobile sr-only spans
+      document.querySelectorAll('#toggle-motion-mobile .sr-only').forEach(function(s) {
+        s.textContent = reduced ? 'Réactiver les animations' : 'Désactiver les animations';
+      });
+    }
+
+    // Restore preference
+    if (localStorage.getItem('reduce-motion') === 'true') {
+      document.documentElement.classList.add('reduce-motion');
+      apply(true);
+    }
+
+    function toggle() {
+      var reduced = document.documentElement.classList.toggle('reduce-motion');
+      localStorage.setItem('reduce-motion', String(reduced));
+      apply(reduced);
+    }
+
+    btns.forEach(function(b) { if (b) b.addEventListener('click', toggle); });
+  })();
+
+  // Scroll to top
   (function() {
     var btn = document.getElementById('scroll-to-top');
     if (!btn) return;
