@@ -1,0 +1,115 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import Card from '../components/Card.astro';
+import Button from '../components/Button.astro';
+import ScrollReveal from '../components/ScrollReveal.astro';
+
+const services = [
+  {
+    title: 'Site vitrine',
+    description: 'Un site professionnel pour présenter votre activité, vos services et vos coordonnées. Pensé pour être trouvé sur Google et convaincre vos visiteurs dès la première impression.',
+    icon: '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0V12a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 12V5.25" /></svg>',
+    mention: 'Sur devis',
+  },
+  {
+    title: 'Refonte de site existant',
+    description: "Votre site est vieillissant ou ne vous représente plus ? Je le modernise en conservant votre identité et votre référencement existant.",
+    icon: '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" /></svg>',
+    mention: 'Sur devis',
+  },
+  {
+    title: 'Maintenance & évolution',
+    description: "Mises à jour, ajout de contenu, corrections techniques : je reste votre interlocuteur unique après la livraison.",
+    icon: '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75a4.5 4.5 0 01-4.884 4.484c-1.076-.091-2.264.071-2.95.904l-7.152 8.684a2.548 2.548 0 11-3.586-3.586l8.684-7.152c.833-.686.995-1.874.904-2.95a4.5 4.5 0 016.336-4.486l-3.276 3.276a2.25 2.25 0 003.182 3.182l3.276-3.276c.256.565.398 1.192.398 1.852z" /></svg>',
+    mention: 'Sur devis',
+  },
+];
+
+const steps = [
+  {
+    number: '01',
+    title: 'Écoute',
+    description: 'On échange sur vos besoins, vos objectifs et votre cible. Je vous pose les bonnes questions.',
+  },
+  {
+    number: '02',
+    title: 'Conception',
+    description: "Je conçois la structure et le design de votre site. Vous validez avant chaque étape.",
+  },
+  {
+    number: '03',
+    title: 'Développement',
+    description: 'Je développe votre site avec les meilleures pratiques : rapide, accessible, bien référencé.',
+  },
+  {
+    number: '04',
+    title: 'Livraison',
+    description: 'Votre site est mis en ligne. Je reste disponible pour le faire évoluer.',
+  },
+];
+---
+
+<BaseLayout
+  title="Services — Création de sites web, refonte, maintenance | Tristan Labbé"
+  description="Création de sites vitrines, refonte de sites existants et maintenance pour TPE, artisans et associations. Devis gratuit et personnalisé."
+>
+  <!-- Hero -->
+  <section class="py-20 lg:py-28 bg-gradient-to-br from-primary to-primary-light text-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">Mes services</h1>
+      <p class="text-lg text-white/80 max-w-2xl mx-auto">
+        Des solutions adaptées à votre budget et vos objectifs. Chaque projet est unique, chaque devis est personnalisé.
+      </p>
+    </div>
+  </section>
+
+  <!-- Services détaillés -->
+  <section class="py-20 lg:py-28 bg-surface dark:bg-[var(--color-dark-bg)]">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-3 gap-8">
+        {services.map((service) => (
+          <ScrollReveal>
+            <Card title={service.title} description={service.description} icon={service.icon} mention={service.mention} />
+          </ScrollReveal>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Processus de travail -->
+  <section class="py-20 lg:py-28 bg-surface-alt dark:bg-[var(--color-dark-surface)]">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ScrollReveal>
+        <SectionHeading title="Comment ça se passe ?" subtitle="Un processus clair et transparent, de l'écoute à la livraison." />
+      </ScrollReveal>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {steps.map((step) => (
+          <ScrollReveal>
+            <div class="text-center p-6 rounded-xl bg-card dark:bg-[var(--color-dark-card)] border border-default dark:border-[var(--color-dark-border)] shadow-sm">
+              <div class="text-4xl font-bold text-accent/30 mb-3">{step.number}</div>
+              <h3 class="text-lg font-bold text-primary dark:text-white mb-2">{step.title}</h3>
+              <p class="text-sm text-text-muted dark:text-[var(--color-dark-text-muted)]">{step.description}</p>
+            </div>
+          </ScrollReveal>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20 bg-gradient-to-r from-primary to-accent text-white text-center">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ScrollReveal>
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Prêt à lancer votre projet ?</h2>
+        <p class="text-lg text-white/80 mb-8">
+          Décrivez-moi votre besoin, je vous réponds sous 24h avec un devis gratuit et personnalisé.
+        </p>
+        <Button href="/portfolio/contact/" variant="primary" size="lg" class="bg-white text-primary hover:bg-white/90">
+          Demander un devis gratuit
+        </Button>
+      </ScrollReveal>
+    </div>
+  </section>
+</BaseLayout>

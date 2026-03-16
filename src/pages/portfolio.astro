@@ -1,0 +1,72 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import Card from '../components/Card.astro';
+import Button from '../components/Button.astro';
+import ScrollReveal from '../components/ScrollReveal.astro';
+
+const projects = [
+  {
+    title: 'Les Butineuses des 1000 fleurs',
+    description: "Site vitrine pour une association apicole. Présentation de l'activité, des produits et des événements.",
+    href: 'https://lesbutineusesdes1000fleurs.fr/',
+  },
+  {
+    title: 'Soirée Guitare',
+    description: 'Site événementiel pour un concert. Page unique, design immersif, informations pratiques.',
+    href: 'https://labbetristan.github.io/soireeGuitare/',
+  },
+  {
+    title: 'Site MoS-T',
+    description: 'Site vitrine multilingue français / anglais. Accessibilité et internationalisation.',
+    href: 'https://aurelieleborgne.github.io/site-MoS-T/fr/',
+  },
+];
+---
+
+<BaseLayout
+  title="Réalisations — Sites web pour TPE et associations | Tristan Labbé"
+  description="Découvrez mes réalisations : sites vitrines pour associations, événements et entreprises. Chaque projet est conçu sur-mesure."
+>
+  <!-- Hero -->
+  <section class="py-20 lg:py-28 bg-gradient-to-br from-primary to-primary-light text-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">Mes réalisations</h1>
+      <p class="text-lg text-white/80 max-w-2xl mx-auto">
+        Chaque projet est conçu sur-mesure pour répondre aux besoins spécifiques de mes clients. Cliquez pour visiter les sites.
+      </p>
+    </div>
+  </section>
+
+  <!-- Portfolio grid -->
+  <section class="py-20 lg:py-28 bg-surface dark:bg-[var(--color-dark-bg)]">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {projects.map((project) => (
+          <ScrollReveal>
+            <Card
+              title={project.title}
+              description={project.description}
+              href={project.href}
+            />
+          </ScrollReveal>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20 bg-gradient-to-r from-primary to-accent text-white text-center">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ScrollReveal>
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Votre projet pourrait être le prochain</h2>
+        <p class="text-lg text-white/80 mb-8">
+          Vous avez un projet en tête ? Parlons-en et donnons vie à vos idées.
+        </p>
+        <Button href="/portfolio/contact/" variant="primary" size="lg" class="bg-white text-primary hover:bg-white/90">
+          Discutons de votre projet
+        </Button>
+      </ScrollReveal>
+    </div>
+  </section>
+</BaseLayout>

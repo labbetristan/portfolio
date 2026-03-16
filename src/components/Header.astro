@@ -1,0 +1,150 @@
+---
+const currentPath = Astro.url.pathname;
+
+const navLinks = [
+  { href: '/portfolio/', label: 'Accueil' },
+  { href: '/portfolio/services/', label: 'Services' },
+  { href: '/portfolio/portfolio/', label: 'Portfolio' },
+  { href: '/portfolio/contact/', label: 'Contact' },
+];
+---
+
+<header class="sticky top-0 z-50 bg-card/80 dark:bg-[var(--color-dark-surface)]/80 backdrop-blur-md border-b border-default transition-colors duration-300">
+  <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16" aria-label="Navigation principale">
+    <!-- Logo / Name -->
+    <a href="/portfolio/" class="text-xl font-bold text-primary dark:text-white hover:text-accent transition-colors">
+      Tristan Labbé
+    </a>
+
+    <!-- Desktop nav -->
+    <div class="hidden md:flex items-center gap-8">
+      {navLinks.map((link) => (
+        <a
+          href={link.href}
+          class:list={[
+            'text-sm font-medium transition-colors hover:text-accent',
+            currentPath === link.href
+              ? 'text-accent'
+              : 'text-text-muted dark:text-[var(--color-dark-text-muted)]',
+          ]}
+          aria-current={currentPath === link.href ? 'page' : undefined}
+        >
+          {link.label}
+        </a>
+      ))}
+      <div id="theme-toggle-desktop">
+        <button
+          type="button"
+          aria-label="Basculer le mode sombre"
+          class="p-2 rounded-lg hover:bg-surface-alt dark:hover:bg-[var(--color-dark-card)] transition-colors"
+        >
+          <!-- Sun icon (shown in dark mode) -->
+          <svg class="w-5 h-5 hidden dark:block text-[var(--color-dark-text)]" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
+          </svg>
+          <!-- Moon icon (shown in light mode) -->
+          <svg class="w-5 h-5 block dark:hidden text-text" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile hamburger + theme toggle -->
+    <div class="flex items-center gap-2 md:hidden">
+      <div id="theme-toggle-mobile">
+        <button
+          type="button"
+          aria-label="Basculer le mode sombre"
+          class="p-2 rounded-lg hover:bg-surface-alt dark:hover:bg-[var(--color-dark-card)] transition-colors"
+        >
+          <svg class="w-5 h-5 hidden dark:block text-[var(--color-dark-text)]" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
+          </svg>
+          <svg class="w-5 h-5 block dark:hidden text-text" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
+          </svg>
+        </button>
+      </div>
+      <button
+        type="button"
+        id="menu-toggle"
+        aria-label="Ouvrir le menu"
+        aria-expanded="false"
+        class="p-2 rounded-lg hover:bg-surface-alt dark:hover:bg-[var(--color-dark-card)] transition-colors"
+      >
+        <!-- Hamburger icon -->
+        <svg id="icon-menu" class="w-6 h-6 text-text dark:text-[var(--color-dark-text)]" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+        </svg>
+        <!-- Close icon -->
+        <svg id="icon-close" class="w-6 h-6 hidden text-text dark:text-[var(--color-dark-text)]" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="hidden md:hidden border-t border-default bg-card dark:bg-[var(--color-dark-surface)] transition-all">
+    <div class="px-4 py-4 space-y-3">
+      {navLinks.map((link) => (
+        <a
+          href={link.href}
+          class:list={[
+            'block text-base font-medium px-3 py-2 rounded-lg transition-colors',
+            currentPath === link.href
+              ? 'text-accent bg-accent/10'
+              : 'text-text-muted dark:text-[var(--color-dark-text-muted)] hover:text-accent hover:bg-surface-alt dark:hover:bg-[var(--color-dark-card)]',
+          ]}
+          aria-current={currentPath === link.href ? 'page' : undefined}
+        >
+          {link.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</header>
+
+<script is:inline>
+  // Mobile menu toggle
+  (function() {
+    var toggle = document.getElementById('menu-toggle');
+    var menu = document.getElementById('mobile-menu');
+    var iconMenu = document.getElementById('icon-menu');
+    var iconClose = document.getElementById('icon-close');
+
+    if (!toggle || !menu) return;
+
+    toggle.addEventListener('click', function() {
+      var isOpen = !menu.classList.contains('hidden');
+      menu.classList.toggle('hidden');
+      iconMenu.classList.toggle('hidden');
+      iconClose.classList.toggle('hidden');
+      toggle.setAttribute('aria-expanded', String(!isOpen));
+      toggle.setAttribute('aria-label', isOpen ? 'Ouvrir le menu' : 'Fermer le menu');
+    });
+
+    // Close menu on link click
+    menu.querySelectorAll('a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        menu.classList.add('hidden');
+        iconMenu.classList.remove('hidden');
+        iconClose.classList.add('hidden');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Ouvrir le menu');
+      });
+    });
+  })();
+
+  // Theme toggle
+  (function() {
+    var buttons = document.querySelectorAll('#theme-toggle-desktop button, #theme-toggle-mobile button');
+    buttons.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var isDark = document.documentElement.classList.toggle('dark');
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      });
+    });
+  })();
+</script>
