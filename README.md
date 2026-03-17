@@ -15,7 +15,7 @@ Site vitrine professionnel de **Tristan Labbé**, développeur web freelance sp�
 | Page | Description |
 | :--- | :---------- |
 | Accueil | Hero animé, à propos, compétences, services, réalisations, CTA |
-| Services | Détail des offres (site vitrine, refonte, maintenance) |
+| Services | Détail des offres (site vitrine, refonte) |
 | Portfolio | Réalisations avec captures d'écran des sites livrés |
 | Contact | Formulaire (Formspree) + coordonnées |
 | Mentions légales | Obligations légales |

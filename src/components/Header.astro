@@ -117,56 +117,79 @@ const navLinks = [
       </button>
     </div>
   </nav>
-
-  <!-- Mobile menu -->
-  <div id="mobile-menu" class="hidden md:hidden border-t border-default bg-card dark:bg-[var(--color-dark-surface)] transition-all">
-    <div class="px-4 py-4 space-y-3">
-      {navLinks.map((link) => (
-        <a
-          href={link.href}
-          class:list={[
-            'block text-base font-medium px-3 py-2 rounded-lg transition-colors',
-            currentPath === link.href
-              ? 'text-accent-text dark:text-accent-text-dark bg-accent/10'
-              : 'text-text-muted dark:text-[var(--color-dark-text-muted)] hover:text-accent hover:bg-surface-alt dark:hover:bg-[var(--color-dark-card)]',
-          ]}
-          aria-current={currentPath === link.href ? 'page' : undefined}
-        >
-          {link.label}
-        </a>
-      ))}
-    </div>
-  </div>
 </header>
+
+<!-- Mobile menu overlay — outside header to escape stacking context -->
+<div id="mobile-overlay" class="fixed inset-0 bg-black/60 z-[60] hidden md:hidden" aria-hidden="true"></div>
+
+<!-- Mobile menu — fixed, outside header -->
+<div id="mobile-menu" class="fixed top-16 left-0 right-0 bottom-0 z-[70] hidden md:hidden bg-card dark:bg-[var(--color-dark-surface)] border-t border-default overflow-y-auto">
+  <div class="px-4 py-4 space-y-3">
+    {navLinks.map((link) => (
+      <a
+        href={link.href}
+        class:list={[
+          'block text-base font-medium px-3 py-2 rounded-lg transition-colors',
+          currentPath === link.href
+            ? 'text-accent-text dark:text-accent-text-dark bg-accent/10'
+            : 'text-text-muted dark:text-[var(--color-dark-text-muted)] hover:text-accent hover:bg-surface-alt dark:hover:bg-[var(--color-dark-card)]',
+        ]}
+        aria-current={currentPath === link.href ? 'page' : undefined}
+      >
+        {link.label}
+      </a>
+    ))}
+  </div>
+</div>
 
 <script is:inline>
   // Mobile menu toggle
   (function() {
     var toggle = document.getElementById('menu-toggle');
     var menu = document.getElementById('mobile-menu');
+    var overlay = document.getElementById('mobile-overlay');
     var iconMenu = document.getElementById('icon-menu');
     var iconClose = document.getElementById('icon-close');
 
     if (!toggle || !menu) return;
 
+    function openMenu() {
+      menu.classList.remove('hidden');
+      if (overlay) overlay.classList.remove('hidden');
+      iconMenu.classList.add('hidden');
+      iconClose.classList.remove('hidden');
+      toggle.setAttribute('aria-expanded', 'true');
+      toggle.setAttribute('aria-label', 'Fermer le menu');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeMenu() {
+      menu.classList.add('hidden');
+      if (overlay) overlay.classList.add('hidden');
+      iconMenu.classList.remove('hidden');
+      iconClose.classList.add('hidden');
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.setAttribute('aria-label', 'Ouvrir le menu');
+      document.body.style.overflow = '';
+    }
+
     toggle.addEventListener('click', function() {
       var isOpen = !menu.classList.contains('hidden');
-      menu.classList.toggle('hidden');
-      iconMenu.classList.toggle('hidden');
-      iconClose.classList.toggle('hidden');
-      toggle.setAttribute('aria-expanded', String(!isOpen));
-      toggle.setAttribute('aria-label', isOpen ? 'Ouvrir le menu' : 'Fermer le menu');
+      if (isOpen) closeMenu(); else openMenu();
     });
 
-    // Close menu on link click
+    if (overlay) overlay.addEventListener('click', closeMenu);
+
+    // Close menu on link click & reset body overflow before navigation
     menu.querySelectorAll('a').forEach(function(link) {
       link.addEventListener('click', function() {
-        menu.classList.add('hidden');
-        iconMenu.classList.remove('hidden');
-        iconClose.classList.add('hidden');
-        toggle.setAttribute('aria-expanded', 'false');
-        toggle.setAttribute('aria-label', 'Ouvrir le menu');
+        closeMenu();
       });
+    });
+
+    // Safety: reset overflow on page show (back/forward cache)
+    window.addEventListener('pageshow', function() {
+      document.body.style.overflow = '';
     });
   })();
 

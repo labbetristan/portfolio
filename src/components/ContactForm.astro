@@ -98,6 +98,18 @@ const { formspreeId = 'mojkkrbo' } = Astro.props;
 </form>
 
 <script is:inline>
+  // Pre-fill subject from URL parameter
+  (function() {
+    var params = new URLSearchParams(window.location.search);
+    var sujet = params.get('sujet');
+    if (sujet) {
+      var field = document.getElementById('subject');
+      if (field) field.value = sujet;
+    }
+  })();
+</script>
+
+<script is:inline>
   (function() {
     var form = document.getElementById('contact-form');
     if (!form) return;

@@ -76,7 +76,7 @@ Afficher les 3 services sous forme de **cartes côte à côte** (grid responsive
 - **Mention** : Sur devis
 
 #### Carte 3
-- **Titre** : Maintenance & évolution
+- **Titre** : Évolution
 - **Description** : Mises à jour, ajout de contenu, corrections techniques : je reste votre interlocuteur unique après la livraison.
 - **Mention** : Sur devis
 
