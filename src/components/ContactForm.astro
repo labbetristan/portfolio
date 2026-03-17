@@ -54,7 +54,7 @@ const { formspreeId = 'mojkkrbo' } = Astro.props;
       id="subject"
       name="subject"
       class="w-full px-4 py-3 rounded-lg border border-default dark:border-[var(--color-dark-border)] bg-card dark:bg-[var(--color-dark-card)] text-text dark:text-[var(--color-dark-text)] focus:ring-2 focus:ring-accent focus:border-transparent transition-colors"
-      placeholder="Site vitrine, refonte, maintenance..."
+      placeholder="Site vitrine, refonte, ..."
     />
   </div>
 
@@ -98,19 +98,16 @@ const { formspreeId = 'mojkkrbo' } = Astro.props;
 </form>
 
 <script is:inline>
-  // Pre-fill subject from URL parameter
   (function() {
+    // Pre-fill subject from URL parameter
     var params = new URLSearchParams(window.location.search);
     var sujet = params.get('sujet');
     if (sujet) {
       var field = document.getElementById('subject');
       if (field) field.value = sujet;
     }
-  })();
-</script>
 
-<script is:inline>
-  (function() {
+    // Form submission handler
     var form = document.getElementById('contact-form');
     if (!form) return;
 

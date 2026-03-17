@@ -1,0 +1,36 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  href: string;
+  image: string;
+}
+
+const { title, description, href, image } = Astro.props;
+---
+
+<a href={href} target="_blank" rel="noopener noreferrer" class="card-premium group block overflow-hidden">
+  <div class="relative overflow-hidden">
+    <img
+      src={image}
+      alt={`Aperçu du site ${title}`}
+      class="w-full aspect-[8/5] object-cover object-top transition-transform duration-500 group-hover:scale-105"
+      loading="lazy"
+      width="800"
+      height="500"
+    />
+    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-all duration-300 flex items-center justify-center">
+      <span class="text-white text-sm font-semibold flex items-center gap-1.5 px-4 py-2 rounded-lg bg-accent/90 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300 shadow-lg">
+        Visiter le site
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" /></svg>
+      </span>
+    </div>
+  </div>
+  <div class="p-6">
+    <h3 class="text-lg font-bold text-primary dark:text-white mb-1 group-hover:text-accent transition-colors flex items-center gap-2">
+      {title}
+      <svg class="w-3.5 h-3.5 text-text-muted opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" /></svg>
+    </h3>
+    <p class="text-text-muted dark:text-[var(--color-dark-text-muted)] text-sm leading-relaxed">{description}</p>
+  </div>
+</a>

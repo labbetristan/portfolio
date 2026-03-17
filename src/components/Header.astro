@@ -1,12 +1,7 @@
 ---
-const currentPath = Astro.url.pathname;
+import { navLinks } from '../data/navigation';
 
-const navLinks = [
-  { href: '/portfolio/', label: 'Accueil' },
-  { href: '/portfolio/services/', label: 'Services' },
-  { href: '/portfolio/portfolio/', label: 'Portfolio' },
-  { href: '/portfolio/contact/', label: 'Contact' },
-];
+const currentPath = Astro.url.pathname;
 ---
 
 <header class="sticky top-0 z-50 glass transition-colors duration-300">

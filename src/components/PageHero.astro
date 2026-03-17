@@ -1,0 +1,21 @@
+---
+interface Props {
+  title: string;
+  subtitle?: string;
+}
+
+const { title, subtitle } = Astro.props;
+---
+
+<section class="relative py-24 lg:py-32 overflow-hidden">
+  <div class="absolute inset-0 cta-gradient"></div>
+  <div class="absolute inset-0 opacity-[0.03] grid-overlay" aria-hidden="true"></div>
+  <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
+    <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 hero-animate">{title}</h1>
+    {subtitle && (
+      <p class="text-lg text-white/70 max-w-2xl mx-auto hero-animate hero-animate-delay-1">
+        {subtitle}
+      </p>
+    )}
+  </div>
+</section>
