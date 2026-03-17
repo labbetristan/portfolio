@@ -80,20 +80,22 @@ select, summary, label[for] {
 
 /* ===== Floating particles ===== */
 @keyframes float-up {
-  0% { transform: translateY(100vh) scale(0); opacity: 0; }
-  10% { opacity: 1; }
+  0% { transform: translateY(0) scale(0); opacity: 0; }
+  10% { opacity: 1; transform: translateY(-80px) scale(1); }
   90% { opacity: 1; }
-  100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+  100% { transform: translateY(-1100px) scale(1); opacity: 0; }
 }
 
 .particle {
   position: absolute;
-  width: 4px;
-  height: 4px;
-  background: rgba(255, 255, 255, 0.3);
+  bottom: 0;
+  width: 6px;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.4);
   border-radius: 50%;
   animation: float-up linear infinite;
   pointer-events: none;
+  will-change: transform, opacity;
 }
 
 /* ===== Hero text entrance ===== */
