@@ -7,11 +7,11 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    title: 'Les Butineuses des 1000 fleurs',
+    title: 'Site MoS-T',
     description:
-      "Site vitrine pour une association apicole. Présentation de l'activité, des produits et des événements.",
-    href: 'https://lesbutineusesdes1000fleurs.fr/',
-    image: '/portfolio/images/portfolio/butineuses.webp',
+      'Site vitrine multilingue français / anglais. Accessibilité et internationalisation.',
+    href: 'https://aurelieleborgne.github.io/site-MoS-T/fr/',
+    image: '/portfolio/images/portfolio/mos-t.webp',
   },
   {
     title: 'Soirée Guitare',
@@ -21,10 +21,10 @@ export const projects: Project[] = [
     image: '/portfolio/images/portfolio/soiree-guitare.webp',
   },
   {
-    title: 'Site MoS-T',
+    title: 'Les Butineuses des 1000 fleurs',
     description:
-      'Site vitrine multilingue français / anglais. Accessibilité et internationalisation.',
-    href: 'https://aurelieleborgne.github.io/site-MoS-T/fr/',
-    image: '/portfolio/images/portfolio/mos-t.webp',
-  },
+      "Site vitrine pour une association apicole. Présentation de l'activité, des produits et des événements.",
+    href: 'https://lesbutineusesdes1000fleurs.fr/',
+    image: '/portfolio/images/portfolio/butineuses.webp',
+  }
 ];
